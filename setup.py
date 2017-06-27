@@ -1,57 +1,29 @@
-#!/usr/bin/env python
-
+# -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 
-
-# Shamelessly stolen (then modified) from https://github.com/cburgmer/pdfserver/blob/master/setup.py
-def parse_requirements(file_name):
-    import re
-    requirements = []
-    for line in open(file_name, 'r').read().split('\n'):
-        if re.match(r'(\s*#)|(\s*$)', line):
-            continue
-        # if re.match(r'\s*-e\s+', line):
-        m = re.search(r"(git(?:\+\w{3})?|https?|svn)://.+#egg=(.*)$", line)
-        if m:
-            # FIXME: Can't install packages from source repos right now
-            if 'http' in m.group(1):
-                # Distutils can install Http served packages right now
-                # FIXME: Skip this now
-                # requirements.append(m.group(2))
-                pass
-            pass
-        elif re.match(r'\s*-f\s+', line):
-            pass
-        elif re.match(r'\s*-i\s+', line):
-            pass
-        else:
-            requirements.append(line)
-
-    return requirements
+import gallery
 
 
-def parse_dependency_links(file_name):
-    import re
-    dependency_links = []
-    for line in open(file_name, 'r').read().split('\n'):
-        if re.match(r'\s*-[ef]\s+', line):
-            dependency_links.append(re.sub(r'\s*-[ef]\s+', '', line))
-            continue
-        m = re.search(r"((?:git(?:\+ssh)|http|svn)://.+#egg=.*)$", line)
-        if m:
-            dependency_links.append(m.group(1))
-
-    return dependency_links
-
-params = dict(
-    name='API portfolio',
+setup(
+    name='gallery',
+    version=polls.__version__,
+    description='',
+    author='pycat',
+    author_email='kkampardi@gmail.com',
+    include_package_data=True,
+    url='https://github.com/GoWebyCMS/gallery' % gallery.__version__,
     packages=find_packages(),
-    install_requires=parse_requirements('requirements.txt'),
-    dependency_links=parse_dependency_links('requirements.txt'),
-    entry_points={
-        'console_scripts': [
-        ]
-    },
+    classifiers=[
+        'Development Status :: ',
+        'Environment :: Web Environment',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+    ],
+    zip_safe=False,
 )
 
-setup(**params)
+# Usage of setup.py:
+# $> python setup.py register             # registering package on PYPI
+# $> python setup.py build sdist upload   # build, make source dist and upload to PYPI
