@@ -1,57 +1,36 @@
-#!/usr/bin/env python
+import os
+from setuptools import find_packages, setup
 
-from setuptools import setup, find_packages
+with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
+    README = readme.read()
 
+# allow setup.py to be run from any path
+os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
-# Shamelessly stolen (then modified) from https://github.com/cburgmer/pdfserver/blob/master/setup.py
-def parse_requirements(file_name):
-    import re
-    requirements = []
-    for line in open(file_name, 'r').read().split('\n'):
-        if re.match(r'(\s*#)|(\s*$)', line):
-            continue
-        # if re.match(r'\s*-e\s+', line):
-        m = re.search(r"(git(?:\+\w{3})?|https?|svn)://.+#egg=(.*)$", line)
-        if m:
-            # FIXME: Can't install packages from source repos right now
-            if 'http' in m.group(1):
-                # Distutils can install Http served packages right now
-                # FIXME: Skip this now
-                # requirements.append(m.group(2))
-                pass
-            pass
-        elif re.match(r'\s*-f\s+', line):
-            pass
-        elif re.match(r'\s*-i\s+', line):
-            pass
-        else:
-            requirements.append(line)
-
-    return requirements
-
-
-def parse_dependency_links(file_name):
-    import re
-    dependency_links = []
-    for line in open(file_name, 'r').read().split('\n'):
-        if re.match(r'\s*-[ef]\s+', line):
-            dependency_links.append(re.sub(r'\s*-[ef]\s+', '', line))
-            continue
-        m = re.search(r"((?:git(?:\+ssh)|http|svn)://.+#egg=.*)$", line)
-        if m:
-            dependency_links.append(m.group(1))
-
-    return dependency_links
-
-params = dict(
-    name='API portfolio',
+setup(
+    name='gallery',
+    version='0.1',
     packages=find_packages(),
-    install_requires=parse_requirements('requirements.txt'),
-    dependency_links=parse_dependency_links('requirements.txt'),
-    entry_points={
-        'console_scripts': [
-        ]
-    },
+    include_package_data=True,
+    license='BSD License',  # example license
+    description='A simple Django app/plugin gallery',
+    long_description=README,
+    url='https://www.example.com/',
+    author='pycat',
+    author_email='kkampardi@gmail.com',
+    classifiers=[
+        'Environment :: Web Environment',
+        'Framework :: Django',
+        'Framework :: Django :: 1.10',  # replace "X.Y" as appropriate
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: BSD License',  # example license
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        # Replace these appropriately if you are stuck on Python 2.
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Topic :: Internet :: WWW/HTTP',
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+    ],
 )
-
-setup(**params)
