@@ -1,27 +1,34 @@
-# Go Weby CMS
+=====
+Gallery
+=====
 
-## Custom CMS build with Django Web and ReST Frameworks
+Gallery is a simple Django app/plugin to handle Web-based photo-albums. Users can
+create photo collections and easy display the in the front end
 
-About
-------
+Detailed documentation is in the "docs" directory.
 
-A Django plugin for Photos and Gallery demonstration.
+Quick start
+-----------
+## Use it as a Django third party application
+1. Add "gallery" to your INSTALLED_APPS setting like this::
 
-Compatible with Django 1.10 >= and Djang CMS 3.4
+    INSTALLED_APPS = [
+        ...
+        'gallery',
+    ]
 
+2. Include the gallery URLconf in your project urls.py like this::
 
-Installation for Development
-----------------------------
+    url(r'^gallery/', include('gallery.urls')),
 
+3. Run `python manage.py migrate gallery` to create the polls models.
 
-Features
----------
+4. Start the development server and visit http://127.0.0.1:8000/admin/
+   to create a gallery (you'll need the Admin app enabled).
 
-Current features include:
+5. Visit http://127.0.0.1:8000/gallery/ to vie the list of galleries you just created.
 
-  TODO: Add current features info
+## Use it as a Django CMS plugin
+TODO: Complete instructions
 
-
-Future features include:
-
-  TODO: Add future features info
+pip install --upgrade git+http://git@github.com/GoWebyCMS/gallery.git
