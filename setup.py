@@ -7,6 +7,7 @@ import gallery
 setup(
     name='gallery',
     version=polls.__version__,
+    version=gallery.__version__,
     description='',
     author='pycat',
     author_email='kkampardi@gmail.com',
@@ -27,3 +28,4 @@ setup(
 # Usage of setup.py:
 # $> python setup.py register             # registering package on PYPI
 # $> python setup.py build sdist upload   # build, make source dist and upload to PYPI
+
