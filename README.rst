@@ -1,46 +1,34 @@
-# Coming Soon Django Application
-## Initially developed for Django Hatchery CMS
+=====
+Gallery
+=====
 
-[![Build Status]
+Gallery is a simple Django app/plugin to handle Web-based photo-albums. Users can
+create photo collections and easy display the in the front end
 
-Current Version: 0.0
+Detailed documentation is in the "docs" directory.
 
+Quick start
+-----------
+## Use it as a Django third party application
+1. Add "gallery" to your INSTALLED_APPS setting like this::
 
-## Requirements
+    INSTALLED_APPS = [
+        ...
+        'gallery',
+    ]
 
-## Pre-Requisites
-You must have at least one Site entry in your database **before** installing Comingsoon.
+2. Include the gallery URLconf in your project urls.py like this::
 
-## Supported Django Versions
-- 1.10
-- 1.9
+    url(r'^gallery/', include('gallery.urls')),
 
-## Installation
+3. Run `python manage.py migrate gallery` to create the polls models.
 
-  - `pip install git+http://git@github.com/GoWebyCMS/gallery.git#egg=gallery`
+4. Start the development server and visit http://127.0.0.1:8000/admin/
+   to create a gallery (you'll need the Admin app enabled).
 
--- or --
+5. Visit http://127.0.0.1:8000/gallery/ to vie the list of galleries you just created.
 
-Download Coming Soon from [source](https://github.com/GoWebyCMS/gallery/archive/master.zip)
+## Use it as a Django CMS plugin
+TODO: Complete instructions
 
-Enable a virtualenv
-
-  - $ virtualenv virtualenv
-  - $ source venv/bin/activate
-
-Python Setup
-  - $ python setup.py install
-  or
-  - add `gallery` to your PYTHONPATH
-
-## Settings and Required Values
-
-
-## Usage
-TODO: Add usage screen and description
-eckbox and save.
-
-### Database migrations
-  `manage.py migrate`
-
-  TODO: Legacy support for South migrations
+pip install --upgrade git+http://git@github.com/GoWebyCMS/gallery.git

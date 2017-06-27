@@ -1,6 +1,6 @@
 from django.db import models
 from filer.fields.image import FilerImageField
-
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 
@@ -11,8 +11,14 @@ class Gallery(models.Model):
 
     featured_image = FilerImageField(related_name="featured")
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('details', (), {'slug': self.slug})
+
     def __str__(self):
         return self.title
+
+
 
 class Image(models.Model):
     image_file = FilerImageField()

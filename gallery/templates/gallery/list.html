@@ -6,21 +6,16 @@
 {% block content %}
 	{% placeholder "content" %}
     <!-- image Gallery -->
-    <div class="wrapper">
-      <div class="">
-        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3 masonry">
+      <div >
+        <ul >
           {% for gallery in latest_gallery_list %}
-          <li class="masonry-item grid">
-            <figure class="effect-sarah"> <img src="{% thumbnail gallery.featured_image 400x700 %}" alt="{{ gallery.title }}" />
-              <figcaption>
-                <h2>Gallery <span>{{ gallery.title }}</span></h2>
-                <p>{{ gallery.description }}</p>
-                <a href="details.html">View more</a> </figcaption>
-            </figure>
+          <li >
+              <img src="{% thumbnail gallery.featured_image 400x700 %}" alt="{{ gallery.title }}" />
+              <h2>Gallery <span>{{ gallery.title }}</span></h2>
+              <p>{{ gallery.description }}</p>
+              <a href="{{ gallery.get_absolute_url }}">View more</a>
           </li>
           {% endfor %}
         </ul>
       </div>
-    </div>
 {% endblock content %}
-<!-- Image Gallery -->
