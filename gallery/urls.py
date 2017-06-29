@@ -7,4 +7,3 @@ urlpatterns = [
     # url(r'^gallery/(?P<slug>[-\w\d]+)/$', views.DetailView.as_view(), name='detail'),
     url(r'^(?P<gallery_slug>[\w-]+)/$', views.gallery_detail, name='gallery_detail'),
 
-]

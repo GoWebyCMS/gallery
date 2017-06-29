@@ -11,6 +11,9 @@ class Gallery(models.Model):
 
     featured_image = FilerImageField(related_name="featured")
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('details', (), {'slug': self.slug})
 
     def __str__(self):
         return self.title
@@ -20,3 +23,4 @@ class Gallery(models.Model):
 class GalleryImage(models.Model):
     image_file = FilerImageField(related_name='gallery_images')
     gallery = models.ForeignKey(Gallery)
+    

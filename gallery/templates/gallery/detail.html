@@ -1,11 +1,6 @@
-{% extends "base.html" %}
 
-{% block content %}
- <div>
-     <div >
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat eu nibh ultricies semper. Vivamus porta, felis vitae facilisis sodales, felis est iaculis orci, et ornare sem mauris ut turpis. Pellentesque vitae tortor nec tellus hendrerit aliquam. Donec condimentum leo eu ull pellentesque urna rhoncus.</p>
-         <p>elis est iaculis orci, et ornare sem mauris ut turpis. Pellentesque vitae tortor nec tellus hendrerit aliquam. Donec condimentum leo eu ullamcorper scelerisque pellentes rhoncus.</p>
-        <!-- content -->
-     </div>
- </div>
-{% endblock content %}
+{% extends 'gallery/base.html' %}
+
+{% block polls_content %}
+<h1>{{ gallery.title }}</h1>
+{% endblock %}

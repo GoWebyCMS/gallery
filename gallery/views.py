@@ -10,6 +10,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Gallery.objects.all()
 
+
 class DetailView(generic.DetailView):
     model = Gallery
     template_name = 'gallery/detail.html'
