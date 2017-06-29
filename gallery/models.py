@@ -20,6 +20,7 @@ class Gallery(models.Model):
 
 
 
-class Image(models.Model):
-    image_file = FilerImageField()
-    obj = models.ForeignKey(Gallery)
+class GalleryImage(models.Model):
+    image_file = FilerImageField(related_name='gallery_images')
+    gallery = models.ForeignKey(Gallery)
+    

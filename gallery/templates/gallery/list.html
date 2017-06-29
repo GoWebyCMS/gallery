@@ -1,21 +1,20 @@
+{% load staticfiles thumbnails %}
 {% extends "base.html" %}
-{% load staticfiles cms_tags thumbnail %}
-
-{% block title %}{% page_attribute "page_title" %}{% endblock title %}
-
 {% block content %}
-	{% placeholder "content" %}
     <!-- image Gallery -->
-      <div >
-        <ul >
-          {% for gallery in latest_gallery_list %}
-          <li >
-              <img src="{% thumbnail gallery.featured_image 400x700 %}" alt="{{ gallery.title }}" />
-              <h2>Gallery <span>{{ gallery.title }}</span></h2>
-              <p>{{ gallery.description }}</p>
-              <a href="{{ gallery.get_absolute_url }}">View more</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
+<div >
+    <ul>
+        {% for gallery in latest_gallery_list %}
+        <li class="masonry-item grid">
+            <figure > <img src="{% thumbnail gallery.featured_image 700x1000 %}" alt="" />
+                <figcaption>
+                    <h2>Gallery <span>{{ gallery.title }}</span></h2>
+                    <p>{{ gallery.description }}</p>
+                    <a href="{% url 'gallery_detail' slug=gallery.slug %}">View more</a> </figcaption>
+            </figure>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock content %}
+
