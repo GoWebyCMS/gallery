@@ -32,3 +32,5 @@ Quick start
 TODO: Complete instructions
 
 pip install --upgrade git+http://git@github.com/GoWebyCMS/gallery.git
+
+docker-compose up -build --no-cache

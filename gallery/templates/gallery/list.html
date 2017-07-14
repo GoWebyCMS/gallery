@@ -1,5 +1,5 @@
-{% load staticfiles thumbnails %}
 {% extends "base.html" %}
+{% load staticfiles thumbnail %}
 {% block content %}
     <!-- image Gallery -->
 <div >
@@ -10,7 +10,7 @@
                 <figcaption>
                     <h2>Gallery <span>{{ gallery.title }}</span></h2>
                     <p>{{ gallery.description }}</p>
-                    <a href="{% url 'gallery_detail' slug=gallery.slug %}">View more</a> </figcaption>
+                    <a href="">View more</a> </figcaption>
             </figure>
         </li>
         {% endfor %}
